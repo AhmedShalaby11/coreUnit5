@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+
+
+    <title>@ViewBag.Title</title>
+</head>
+<body ng-app="angularApp" ng-controller="registrationController">
+    <div>
+        @RenderBody()
+    </div>
+
+    {
+</body>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1940:' + (new Date).getFullYear()  
+        });
+    });
+</script>
+
+
+
+
+
+<script>
+
+    var app = angular.module('angularApp', []);
+
+    //
+
+    app.controller('registrationController', function ($scope, $http) {
+        $scope.showresponse = false;
+        // Doctor professional info configuration.
+        $scope.doctorPrecense = ["Available", "Abroad"];
+
+        //API for user registration.
+
+        $scope.regREQ = function (n, t, od, oq, deg, prec) {
+            var bYear = $("#dp1519323288841").val();
+            var pYear = $("#dp1519323288843").val();
+            var mYear = $("#dp1519323288842").val();
+            var bdate = $("#dp1519323288840").val();
+
+            //    name,date of birth,title,other degrees,other qualifications,degree,bach-mcs-phd year,precense
+
+
+            $http({
+
+                url: "api/DoctorProfiles",
+                method: "POST",
+                data: {
+                    "DoctorName": n,
+                    "DoctorTitle": t,
+                    "DoctorDegree": deg,
+                    "DoctorBachYear": bYear,
+                    "DoctorMcsYear": mYear,
+                    "DoctorPhdYear": pYear,
+                    "DoctorBirthdate": bdate,
+                    "DoctorOtherDegrees": od,
+                    "DoctorOtherQualifications": oq,
+                    "DoctorPrecense": prec
+                }, headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                if (response.status == 200 || response.status == 201) {
+                    $scope.response = "Profile Created";
+                    $scope.showresponse = true;
+                }
+                else {
+                    $scope.response = "Problem occured, Please contact your system administrator.";
+                    $scope.showresponse = true;
+                }
+
+            });
+
+        };
+
+
+    });
+</script>
+
+
+</html>
