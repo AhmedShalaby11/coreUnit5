@@ -23,6 +23,7 @@ namespace unit5.Controllers
         public ActionResult CasualityView()
         {
             return View();
+
         }
 
         // GET: Registration/Details/5
