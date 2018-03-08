@@ -1,57 +1,43 @@
 ﻿@{
-
-
 }
-
 
 <div class="container">
     <div class="row justify-content-start">
         <div class="col-4">
             <div class="form-group">
                 <label for="">Parity</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="Enter text">
+                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="">Numerical Data</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="Enter text">
-                <small id="" class="form-text text-muted"></small>
-            </div>
-        </div>
+   
     </div>
     <div class="row justify-content-start">
         <div class="col-4">
             <div class="form-group">
                 <label for="">GA</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="Enter text">
+                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
+
         </div>
         <div class="col-2">
             <div class="form-group">
-                <label for="">Weeks</label>
-                <select>
-                    <option value="value">text</option>
-                </select>
+                <label for="">Numerical Data</label>
+                <input type="text" class="form-control"  id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="">Days</label>
-                <select>
-                    <option value="value">text</option>
-                </select>
-                <small id="" class="form-text text-muted"></small>
-            </div>
-        </div>
+     
+    
+    </div>
+
+    <div class="row justify-content-start">
         <div class="col-2">
             <div class="form-group">
                 <label for="">Presentation</label>
                 <select>
-                    <option value="value">text</option>
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -60,7 +46,25 @@
             <div class="form-group">
                 <label for="">State</label>
                 <select>
-                    <option value="value">text</option>
+                    <option value="value">Select</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label for="">Weeks</label>
+                <select>
+                    <option value="value">Select</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label for="">Days</label>
+                <select>
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -81,36 +85,36 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="">Intervention</label>
-                <select>
-                    <option value="value">text</option>
+                <select ng-model="model_intervention">
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-2" ng-show="model_intervention">
             <div class="form-group">
                 <label for="">Outcome</label>
                 <select>
-                    <option value="value">text</option>
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-2" ng-show="model_intervention">
             <div class="form-group">
                 <label for="">Sex</label>
                 <select>
-                    <option value="value">text</option>
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-2" ng-show="model_intervention">
             <div class="form-group">
                 <label for="">State</label>
                 <select>
-                    <option value="value">text</option>
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -127,7 +131,7 @@
         <div class="col-2">
             <div class="form-group">
                 <label for="">Weight</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="Enter text">
+                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
@@ -141,17 +145,17 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="">Complications</label>
-                <select>
-                    <option value="value">text</option>
+                <select ng-model="model_complications">
+                    <option value="value">Select</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         
-            <div class="col-auto">
+            <div class="col-auto" ng-show="model_complications">
                 <div class="form-group">
                     <label for="">Dynamics</label>
                     <select>
-                        <option value="value">text</option>
+                        <option value="value">Select</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
@@ -163,28 +167,28 @@
             <div class="col-4">
                 <div class="form-group">
                     <label for="">Surgeon</label>
-                    <select>
-                        <option value="value">text</option>
+                    <select ng-model="model_surgeon">
+                        <option value="value">Select</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-4" ng-show="model_surgeon"> 
                 <div class="form-group">
                     <label for="">Assistant</label>
                     <select>
-                        <option value="value">text</option>
+                        <option value="value">Select</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-4" ng-show="model_surgeon">
                 <div class="form-group">
                     <label for="">Supervisor</label>
                     <select>
-                        <option value="value">text</option>
+                        <option value="value">Select</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
@@ -193,10 +197,4 @@
 
         @* End *@
     </div>
-  
-
-
-
-  
-
 </div>
