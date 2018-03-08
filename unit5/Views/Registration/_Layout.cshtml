@@ -44,12 +44,45 @@
 
 
 <script>
-
+    
     var app = angular.module('angularApp', []);
 
     //
 
     app.controller('registrationController', function ($scope, $http) {
+
+        var assistantObject = [];
+        var supervisorObject = [];
+        $scope.AddAssitant = function (a) {
+            assistantObject.push(a);
+            console.log(assistantObject);
+
+        }
+//AddSupervisor
+        $scope.AddSupervisor = function (s) {
+            supervisorObject.push(s);
+            console.log(supervisorObject);
+
+        }
+        /// define the weeks days ddm
+        var weeksObject = [];
+        var DaysObject = [];
+      
+            for (i = 0; i < 43; i++) {
+
+                weeksObject.push(i);
+            }
+        
+            for (j = 0; j < 7; j++) {
+
+                DaysObject.push(j);
+            }
+            $scope.weeksOrder = weeksObject;
+            $scope.DaysOrder = DaysObject;
+
+
+        //
+       
         $scope.showresponse = false;
         // Doctor professional info configuration.
         $scope.doctorPrecense = ["Available", "Abroad"];

@@ -2,6 +2,7 @@
 }
 
 <div class="container">
+
     <div class="row justify-content-start">
         <div class="col-4">
             <div class="form-group">
@@ -9,27 +10,37 @@
                 <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
+
         </div>
-   
-    </div>
-    <div class="row justify-content-start">
-        <div class="col-4">
+        <div class="col-1">
             <div class="form-group">
-                <label for="">GA</label>
+                <label for=""><strong>+</strong></label>
                 <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
         </div>
-        <div class="col-2">
+
+        
+
+        <div class="col-2 mt-4">
             <div class="form-group">
-                <label for="">Numerical Data</label>
-                <input type="text" class="form-control"  id="" aria-describedby="" placeholder="">
+                <label for="">Weeks</label>
+                <select>
+                    <option ng-repeat="w in weeksOrder">{{w}}</option>
+                </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-     
-    
+        <div class="col-2 mt-4">
+            <div class="form-group">
+                <label for="">Days</label>
+                <select>
+                    <option ng-repeat="d in DaysOrder">{{d}}</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
     </div>
 
     <div class="row justify-content-start">
@@ -51,24 +62,7 @@
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="">Weeks</label>
-                <select>
-                    <option value="value">Select</option>
-                </select>
-                <small id="" class="form-text text-muted"></small>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="">Days</label>
-                <select>
-                    <option value="value">Select</option>
-                </select>
-                <small id="" class="form-text text-muted"></small>
-            </div>
-        </div>
+
     </div>
 
     <div class="row justify-content-start">
@@ -172,27 +166,38 @@
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
+
+
             </div>
 
-            <div class="col-4" ng-show="model_surgeon"> 
+            <div class="col-auto" ng-show="model_surgeon">
+
+                
                 <div class="form-group">
                     <label for="">Assistant</label>
-                    <select>
+                    <select ng-model="a">
                         <option value="value">Select</option>
-                    </select>
+                        <option>Ahmed shalaby</option>
+                        <option>Ayman Abbas</option>
+                    </select> <span ng-click="AddAssitant(a)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
+
+           
             </div>
 
-            <div class="col-4" ng-show="model_surgeon">
+            <div class="col-auto" ng-show="model_surgeon">
                 <div class="form-group">
                     <label for="">Supervisor</label>
-                    <select>
+                    <select ng-model="s">
                         <option value="value">Select</option>
-                    </select>
+                        <option>Ahmed shalaby super</option>
+                        <option>Ayman Abbas super</option>
+                    </select> <span ng-click="AddSupervisor(s)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
             </div>
+     
         </div>
 
         @* End *@

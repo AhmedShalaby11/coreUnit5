@@ -17,6 +17,7 @@ namespace unit5.Models
         public virtual DbSet<DoctorProfile> DoctorProfile { get; set; }
         public virtual DbSet<PatientDiagnose> PatientDiagnose { get; set; }
         public virtual DbSet<PatientProfile> PatientProfile { get; set; }
+      
 
         public unit5Context()
         {
