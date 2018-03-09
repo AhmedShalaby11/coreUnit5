@@ -33,7 +33,7 @@ namespace unit5.APIs
                 var d = record[i].Split(',');
                 _context.ConfCsIndication.Add(new ConfCsIndication
                 {
-                    CsIndicationName = d[0],
+                    name= d[0],
                     Type = d[1]
                 });
             }

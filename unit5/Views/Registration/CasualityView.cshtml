@@ -1,7 +1,7 @@
 ﻿    @{
 }
 
-<div class="container">
+<div class=" container" style="margin-top:30px;">
 
     <div class="row justify-content-start">
         <div class="col-4">
@@ -79,16 +79,20 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="">Intervention</label>
-                <select ng-model="model_intervention" ng-options="i.interventionName for i in ObjectIntervention">             
+
+                <select ng-model="model_intervention">
+
+                    <option ng-repeat="i in ObjectIntervention">{{i.interventionName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
+      
         <div class="col-2" ng-show="model_intervention">
             <div class="form-group">
                 <label for="">Outcome</label>
                 <select>
-                    <option value="value">Select</option>
+                    <option ng-repeat="ob in ConcatedObject ">{{ob.name}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -145,13 +149,13 @@
             </div>
         
             <div class="col-auto" ng-show="model_complications">
-                <div class="form-group">
+                @*<div class="form-group">
                     <label for="">Dynamics</label>
                     <select>
                         <option value="value">Select</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
-                </div>
+                </div>*@
             </div>
         </div>
 
@@ -175,7 +179,7 @@
                 <div class="form-group">
                     <label for="">Assistant</label>
                     <select ng-model="a">
-                        <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
+                        <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
                     </select> <span ng-click="AddAssitant(a)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
@@ -187,7 +191,7 @@
                 <div class="form-group">
                     <label for="">Supervisor</label>
                     <select ng-model="s">
-                        <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
+                        <option ng-repeat="doctor in ObjectDoctors" >{{doctor.doctorName}}</option>
                     </select> <span ng-click="AddSupervisor(s)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>

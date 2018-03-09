@@ -88,7 +88,7 @@ namespace unit5.Models
 
                 entity.Property(e => e.Recid).HasColumnName("recid");
 
-                entity.Property(e => e.CsIndicationName)
+                entity.Property(e => e.name)
                     .HasColumnName("cs_indication_name")
                     .HasMaxLength(150)
                     .IsUnicode(false);

@@ -69,26 +69,35 @@
             $http.get('api/NeonatalOutcomes').then(function (neonatalResponse) {
 
                 $http.get('api/ComplicationsModels').then(function (ComplicationsResponse) {
-                    var allObjects = []; 
-                    var x1 = neonatalResponse.data ;
-                    var x2 = ComplicationsResponse.data;
 
-                    x1.forEach(function(el1){
-                        allObjects.push(el1);
-                    
-                    });
-                    x2.forEach(function (el2) {
-                        allObjects.push(el2);
+                    $http.get('api/ConfCsIndications').then(function (IndicationsResponse) {
+                        var allObjects = [];
+                        var x1 = neonatalResponse.data;
+                        var x2 = ComplicationsResponse.data;
+                        var x3= IndicationsResponse.data;
 
+                        x1.forEach(function (el1) {
+                            allObjects.push(el1);
+
+                        });
+                        x2.forEach(function (el2) {
+                            allObjects.push(el2);
+
+                        });
+                        x3.forEach(function (el3) {
+                            allObjects.push(el3);
+
+                        });
+                        console.log(allObjects);
+
+                        $scope.ConcatedObject = allObjects;
                     });
-                    console.log(allObjects);
                 });
-
             });
             //Intervention
             $http.get('api/ConfInterventions').then(function (response) {
                 $scope.ObjectIntervention = response.data;
-
+                console.log(response.data);
             });
 
             //Complications 
