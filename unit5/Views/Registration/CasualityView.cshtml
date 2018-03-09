@@ -1,13 +1,13 @@
-﻿    @{
+﻿@{
 }
 
 <div class=" container" style="margin-top:30px;">
 
     <div class="row justify-content-start">
-        <div class="col-4">
+        <div class="col-auto">
             <div class="form-group">
                 <label for="">Parity</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
+                <input ng-model="ng0parity" type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
@@ -15,27 +15,27 @@
         <div class="col-1">
             <div class="form-group">
                 <label for=""><strong>+</strong></label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
+                <input ng-model="ng0plus" type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
         </div>
 
-        
 
-        <div class="col-2 mt-4">
+
+        <div class="col-auto mt-4">
             <div class="form-group">
                 <label for="">Weeks</label>
-                <select>
+                <select ng-model="ng0weeks">
                     <option ng-repeat="w in weeksOrder">{{w}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2 mt-4">
+        <div class="col-auto mt-4">
             <div class="form-group">
                 <label for="">Days</label>
-                <select>
+                <select ng-model="ng0days">
                     <option ng-repeat="d in DaysOrder">{{d}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
@@ -44,19 +44,19 @@
     </div>
 
     <div class="row justify-content-start">
-        <div class="col-2">
+        <div class="col-auto">
             <div class="form-group">
                 <label for="">Presentation</label>
-                <select >
+                <select ng-model="ng0presentation">
                     <option ng-repeat="p in ObjectChildPresentation">{{p.presentationName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-auto">
             <div class="form-group">
                 <label for="">State</label>
-                <select>
+                <select ng-model="ng0state">
                     <option ng-repeat="s in ObjectChildState" ng-value="s.stateName">{{s.stateName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
@@ -69,102 +69,144 @@
 
 
 
- 
+
     </div>
 
     <div class="row justify-content-start">
 
 
 
-        <div class="col-4">
+        <div class="col-auto">
             <div class="form-group">
                 <label for="">Intervention</label>
 
-                <select ng-model="model_intervention">
+                <select ng-model="ng0intervention">
 
                     <option ng-repeat="i in ObjectIntervention">{{i.interventionName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-      
-        <div class="col-2" ng-show="model_intervention">
+
+        <div class="col-auto" ng-show="ng0intervention">
             <div class="form-group">
                 <label for="">Outcome</label>
-                <select>
-                    <option ng-repeat="ob in ConcatedObject ">{{ob.name}}</option>
+                <select ng-model="ng0InterventionOutcome">
+                    <option ng-repeat="ob in ConcatedObject">{{ob.name}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2" ng-show="model_intervention">
+        <div class="col-auto" ng-show="ng0intervention">
             <div class="form-group">
                 <label for="">Sex</label>
-                <select>
-                    <option value="value">Select</option>
+                <select ng-model="ng0sex">
+                    <option>Male</option>
+                    <option>Female</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
 
-        <div class="col-2" ng-show="model_intervention">
+        <div class="col-auto" ng-show="ng0intervention">
             <div class="form-group">
                 @*<label for="">State</label>
-                <select>
-                    <option value="value">Select</option>
-                </select>
-                <small id="" class="form-text text-muted"></small>*@
+                    <select>
+                        <option value="value">Select</option>
+                    </select>
+                    <small id="" class="form-text text-muted"></small>*@
             </div>
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    @* CS INDICATION  *@
+    <div class="row justify-content-start">
 
 
 
-        <div class="col-4">
-
-        </div>
-        <div class="col-2">
+        <div class="col-auto">
             <div class="form-group">
-                <label for="">Weight</label>
-                <input type="text" class="form-control" id="" aria-describedby="" placeholder="">
+                <label for="">CS Indications</label>
+
+                <select ng-model="ng0csindication">
+
+                    <option ng-repeat="in in intervenList">{{in.interventionName}}</option>
+                </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
         </div>
-        <div class="col-2">
+
+        <div class="col-auto" ng-show="ng0csindication">
+            <div class="form-group">
+                <label for="">Outcome</label>
+                <select ng-model="ng0indicationOutcome">
+                    <option ng-repeat="obj in indicationList">{{obj.name}}</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-auto" ng-show="ng0csindication">
+            <div class="form-group">
+
+            </div>
+        </div>
+
+        <div class="col-auto" ng-show="ng0csindication">
+            <div class="form-group">
+                @*<label for="">State</label>
+                    <select>
+                        <option value="value">Select</option>
+                    </select>
+                    <small id="" class="form-text text-muted"></small>*@
+            </div>
+        </div>
+    </div>
+
+    @*  *@
+    <div class="row justify-content-center">
+        <div class="col-auto">
+
+        </div>
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Weight</label>
+                <input ng-model="ng0weight" type="text" class="col-4 form-control" id="" aria-describedby="" placeholder="">
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-auto">
 
         </div>
     </div>
 
 
     <div class="row justify-content-start">
-        <div class="col-4">
+        <div class="col-auto">
             <div class="form-group">
                 <label for="">Complications</label>
-                <select ng-model="model_complications">
-            <option ng-repeat="c in ObjectComplication">{{c.name}}</option>
+                <select ng-model="ng0complications">
+                    <option ng-repeat="c in ObjectComplication">{{c.name}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
-        
-            <div class="col-auto" ng-show="model_complications">
+
+            <div class="col-auto" ng-show="ng0complications">
                 @*<div class="form-group">
-                    <label for="">Dynamics</label>
-                    <select>
-                        <option value="value">Select</option>
-                    </select>
-                    <small id="" class="form-text text-muted"></small>
-                </div>*@
+                        <label for="">Dynamics</label>
+                        <select>
+                            <option value="value">Select</option>
+                        </select>
+                        <small id="" class="form-text text-muted"></small>
+                    </div>*@
             </div>
         </div>
 
         @* Surgeon *@
         <div class="col mt-4 justify-content-end">
-            <div class="col-4">
+            <div class="col-auto">
                 <div class="form-group">
                     <label for="">Surgeon</label>
-                    <select ng-model="model_surgeon">
+                    <select ng-model="ng0surgeon">
                         <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
@@ -173,32 +215,36 @@
 
             </div>
 
-            <div class="col-auto" ng-show="model_surgeon">
+            <div class="col-auto" ng-show="ng0surgeon">
 
-                
+
                 <div class="form-group">
                     <label for="">Assistant</label>
-                    <select ng-model="a">
+                    <select ng-model="ng0assistant">
                         <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
-                    </select> <span ng-click="AddAssitant(a)">Add to list?</span>
+                    </select> <span ng-click="AddAssitant(ng0assistant)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
 
-           
+
             </div>
 
-            <div class="col-auto" ng-show="model_surgeon">
+            <div class="col-auto" ng-show="ng0surgeon">
                 <div class="form-group">
                     <label for="">Supervisor</label>
-                    <select ng-model="s">
-                        <option ng-repeat="doctor in ObjectDoctors" >{{doctor.doctorName}}</option>
-                    </select> <span ng-click="AddSupervisor(s)">Add to list?</span>
+                    <select ng-model="ng0supervisor">
+                        <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
+                    </select> <span ng-click="AddSupervisor(ng0supervisor)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
             </div>
-     
+
+            <button class="btn btn-danger" ng-click="addCasulity(ng0parity,ng0plus,ng0weeks,ng0days,ng0presentation,ng0state,ng0intervention,ng0InterventionOutcome,ng0sex,ng0csindication,ng0indicationOutcome,ng0weight,ng0complications,ng0surgeon)"> Submit</button>
+            <p ng-show="showresponse">{{response}}</p>
+
         </div>
 
         @* End *@
+
     </div>
 </div>

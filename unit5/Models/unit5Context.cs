@@ -137,6 +137,18 @@ namespace unit5.Models
                     .HasDefaultValueSql("(getdate())");
             });
 
+
+            modelBuilder.Entity<CasulityDataClass>(entity =>
+            {
+                
+                entity.Property(e => e.RecDate)
+                    .HasColumnName("rec_date")
+                    .HasColumnType("datetime2(0)")
+                    .HasDefaultValueSql("(getdate())");
+            });
+
+
+
             modelBuilder.Entity<ConfOutcome>(entity =>
             {
                 entity.HasKey(e => e.Recid);

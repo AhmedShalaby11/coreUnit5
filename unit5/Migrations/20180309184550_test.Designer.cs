@@ -11,9 +11,10 @@ using unit5.Models;
 namespace unit5.Migrations
 {
     [DbContext(typeof(unit5Context))]
-    partial class unit5ContextModelSnapshot : ModelSnapshot
+    [Migration("20180309184550_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,11 +46,7 @@ namespace unit5.Migrations
 
                     b.Property<string>("Presentation");
 
-                    b.Property<DateTime?>("RecDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("rec_date")
-                        .HasColumnType("datetime2(0)")
-                        .HasDefaultValueSql("(getdate())");
+                    b.Property<DateTime?>("RecDate");
 
                     b.Property<string>("Sex");
 

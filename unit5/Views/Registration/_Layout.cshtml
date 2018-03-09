@@ -15,140 +15,251 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+
 
 
 
     <title>@ViewBag.Title</title>
 </head>
+
+
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div id='div4' class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">
+                        Add some information about the album below, the author, or any other background context. Make it a few sentences
+                        long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or
+                        contact information.
+                    </p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Contact</h4>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#" class="text-white">Follow on Twitter</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Like on Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Email me</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+
+                <strong></strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
 <body ng-app="angularApp" ng-controller="registrationController">
     <div>
         @RenderBody()
     </div>
 
 
-</body>
 
-<script type="text/javascript">
-    $(function () {
-        $(".datepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1940:' + (new Date).getFullYear()  
+
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1940:' + (new Date).getFullYear()
+            });
         });
-    });
-</script>
+    </script>
 
 
 
 
 
-<script>
-    
-    var app = angular.module('angularApp', []);
+    <script>
 
-    //
+        var app = angular.module('angularApp', []);
 
-    app.controller('registrationController', function ($scope, $http) {
+        //
+
+        app.controller('registrationController', function ($scope, $http) {
 
 
-        // get all drop downs
-        $scope.FillDropDowns = function () {
 
-            //Presentation 
-            $http.get('api/ConfChildPresentations').then(function (response) {
-                $scope.ObjectChildPresentation = response.data;
 
-            });
-            //State 
-            $http.get('api/ConfChildStates').then(function (response) {
-                $scope.ObjectChildState = response.data;
+            //insert casulity
+            $scope.addCasulity = function (ng0parity, ng0plus, ng0weeks, ng0days, ng0presentation, ng0state, ng0intervention, ng0InterventionOutcome, ng0sex, ng0csindication, ng0indicationOutcome, ng0weight, ng0complications, ng0surgeon) {
+                console.log(ng0parity + "\n" + ng0plus + "\n" + ng0weeks + "\n" + ng0days + "\n" + ng0presentation + "\n" + ng0state + "\n" + ng0intervention + "\n" + ng0InterventionOutcome + "\n" + ng0sex + "\n" + ng0csindication + "\n" + ng0indicationOutcome + "\n" + ng0weight + "\n" + ng0complications + "\n" + ng0surgeon);
+                //ng0parity,ng0plus,ng0weeks,ng0days,ng0presentation,ng0state,ng0intervention,ng0InterventionOutcome,ng0sex,ng0csindication,ng0indicationOutcome,ng0weight,ng0complications,ng0surgeon
 
-            });
-            //Outcome 
-            $http.get('api/NeonatalOutcomes').then(function (neonatalResponse) {
+                $http({
 
-                $http.get('api/ComplicationsModels').then(function (ComplicationsResponse) {
+                    url: "api/CasulityDataClasses",
+                    method: "POST",
+                    data: {
+                        "parityValue": ng0parity,
+                        "addedValue": ng0plus,
+                        "weeks": ng0weeks,
+                        "days": ng0days,
+                        "presentation": ng0presentation,
+                        "state": ng0state,
+                        "intervention": ng0intervention + ng0csindication,
+                        "outcome": ng0InterventionOutcome + ng0indicationOutcome,
+                        "sex": ng0sex,
+                        "childState": ng0state,
+                        "weight": ng0weight,
+                        "complications": ng0complications,
+                        "dynamics": "",
+                        "surgeons": ng0surgeon,
+                        "assistants": assistantObject.toString(),
+                        "supervisors": supervisorObject.toString()
+                    }, headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    if (response.status == 200 || response.status == 201) {
+                        $scope.response = "Cusality Added";
+                        $scope.showresponse = true;
+                    }
+                    else {
+                        $scope.response = "Problem occured, Please contact your system administrator.";
+                        $scope.showresponse = true;
+                    }
 
-                    $http.get('api/ConfCsIndications').then(function (IndicationsResponse) {
-                        var allObjects = [];
-                        var x1 = neonatalResponse.data;
-                        var x2 = ComplicationsResponse.data;
-                        var x3= IndicationsResponse.data;
+                });
+            }
 
-                        x1.forEach(function (el1) {
-                            allObjects.push(el1);
+            // end of insert
 
-                        });
-                        x2.forEach(function (el2) {
-                            allObjects.push(el2);
 
-                        });
-                        x3.forEach(function (el3) {
-                            allObjects.push(el3);
 
-                        });
-                        console.log(allObjects);
 
-                        $scope.ConcatedObject = allObjects;
+
+
+            // get all drop downs
+            $scope.FillDropDowns = function () {
+                //customized interventions and indications.
+
+
+
+                $http.get('/InterventionList').then(function (interventionOb) {
+                    $http.get('/IndicationList').then(function (indicationOb) {
+                        $scope.intervenList = interventionOb.data;
+                        $scope.indicationList = indicationOb.data;
+                        console.log($scope.intervenList);
+                        console.log($scope.indicationList);
+
                     });
                 });
-            });
-            //Intervention
-            $http.get('api/ConfInterventions').then(function (response) {
-                $scope.ObjectIntervention = response.data;
-                console.log(response.data);
-            });
-
-            //Complications 
-            $http.get('api/ComplicationsModels').then(function (response) {
-                $scope.ObjectComplication = response.data;
-
-            });
-            //Dynamics ??
-            $http.get('').then(function (response) {
-
-
-            });
-            //Surgeon 
-            $http.get('api/DoctorProfiles').then(function (response) {
-
-                $scope.ObjectDoctors = response.data;
-
-            });
-
-
-        };
-        //call it
-        $scope.FillDropDowns();
 
 
 
 
+                //Presentation
+                $http.get('api/ConfChildPresentations').then(function (response) {
+                    $scope.ObjectChildPresentation = response.data;
+
+                });
+                //State
+                $http.get('api/ConfChildStates').then(function (response) {
+                    $scope.ObjectChildState = response.data;
+
+                });
+                //Outcome
+                $http.get('api/NeonatalOutcomes').then(function (neonatalResponse) {
+
+                    $http.get('api/ComplicationsModels').then(function (ComplicationsResponse) {
+
+                        $http.get('api/ConfCsIndications').then(function (IndicationsResponse) {
+                            var allObjects = [];
+                            var x1 = neonatalResponse.data;
+                            var x2 = ComplicationsResponse.data;
+                            var x3 = IndicationsResponse.data;
+
+                            x1.forEach(function (el1) {
+                                allObjects.push(el1);
+
+                            });
+                            x2.forEach(function (el2) {
+                                allObjects.push(el2);
+
+                            });
+                            x3.forEach(function (el3) {
+                                allObjects.push(el3);
+
+                            });
+                            console.log(allObjects);
+
+                            $scope.ConcatedObject = allObjects;
+                        });
+                    });
+                });
+                //Intervention
+                $http.get('api/ConfInterventions').then(function (response) {
+                    $scope.ObjectIntervention = response.data;
+                    console.log(response.data);
+                });
+
+                //Complications
+                $http.get('api/ComplicationsModels').then(function (response) {
+                    $scope.ObjectComplication = response.data;
+
+                });
+                //Dynamics ??
+                $http.get('').then(function (response) {
 
 
-        var assistantObject = [];
-        var supervisorObject = [];
-        $scope.AddAssitant = function (a) {
-            assistantObject.push(a);
-            console.log(assistantObject);
+                });
+                //Surgeon
+                $http.get('api/DoctorProfiles').then(function (response) {
 
-        }
-//AddSupervisor
-        $scope.AddSupervisor = function (s) {
-            supervisorObject.push(s);
-            console.log(supervisorObject);
+                    $scope.ObjectDoctors = response.data;
 
-        }
-        /// define the weeks days ddm
-        var weeksObject = [];
-        var DaysObject = [];
-      
+                });
+
+
+            };
+            //call it
+            $scope.FillDropDowns();
+
+
+
+
+
+
+            var assistantObject = [];
+            var supervisorObject = [];
+            $scope.AddAssitant = function (a) {
+                assistantObject.push(a);
+                console.log(assistantObject);
+
+            }
+            //AddSupervisor
+            $scope.AddSupervisor = function (s) {
+                supervisorObject.push(s);
+                console.log(supervisorObject);
+
+            }
+            /// define the weeks days ddm
+            var weeksObject = [];
+            var DaysObject = [];
+
             for (i = 0; i < 43; i++) {
 
                 weeksObject.push(i);
             }
-        
+
             for (j = 0; j < 7; j++) {
 
                 DaysObject.push(j);
@@ -157,58 +268,61 @@
             $scope.DaysOrder = DaysObject;
 
 
-        //
-       
-        $scope.showresponse = false;
-        // Doctor professional info configuration.
-        $scope.doctorPrecense = ["Available", "Abroad"];
+            //
 
-        //API for user registration.
+            $scope.showresponse = false;
+            // Doctor professional info configuration.
+            $scope.doctorPrecense = ["Available", "Abroad"];
 
-        $scope.regREQ = function (n, t, od, oq, deg, prec) {
-            var bYear = $("#dp1519323288841").val();
-            var pYear = $("#dp1519323288843").val();
-            var mYear = $("#dp1519323288842").val();
-            var bdate = $("#dp1519323288840").val();
+            //API for user registration.
 
-            //    name,date of birth,title,other degrees,other qualifications,degree,bach-mcs-phd year,precense
+            $scope.regREQ = function (n, t, od, oq, deg, prec) {
+                var bYear = $("#dp1519323288841").val();
+                var pYear = $("#dp1519323288843").val();
+                var mYear = $("#dp1519323288842").val();
+                var bdate = $("#dp1519323288840").val();
 
-
-            $http({
-
-                url: "api/DoctorProfiles",
-                method: "POST",
-                data: {
-                    "DoctorName": n,
-                    "DoctorTitle": t,
-                    "DoctorDegree": deg,
-                    "DoctorBachYear": bYear,
-                    "DoctorMcsYear": mYear,
-                    "DoctorPhdYear": pYear,
-                    "DoctorBirthdate": bdate,
-                    "DoctorOtherDegrees": od,
-                    "DoctorOtherQualifications": oq,
-                    "DoctorPrecense": prec
-                }, headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(function (response) {
-                if (response.status == 200 || response.status == 201) {
-                    $scope.response = "Profile Created";
-                    $scope.showresponse = true;
-                }
-                else {
-                    $scope.response = "Problem occured, Please contact your system administrator.";
-                    $scope.showresponse = true;
-                }
-
-            });
-
-        };
+                //    name,date of birth,title,other degrees,other qualifications,degree,bach-mcs-phd year,precense
 
 
-    });
-</script>
+                $http({
+
+                    url: "api/DoctorProfiles",
+                    method: "POST",
+                    data: {
+                        "DoctorName": n,
+                        "DoctorTitle": t,
+                        "DoctorDegree": deg,
+                        "DoctorBachYear": bYear,
+                        "DoctorMcsYear": mYear,
+                        "DoctorPhdYear": pYear,
+                        "DoctorBirthdate": bdate,
+                        "DoctorOtherDegrees": od,
+                        "DoctorOtherQualifications": oq,
+                        "DoctorPrecense": prec
+                    }, headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    if (response.status == 200 || response.status == 201) {
+                        $scope.response = "Profile Created";
+                        $scope.showresponse = true;
+                    }
+                    else {
+                        $scope.response = "Problem occured, Please contact your system administrator.";
+                        $scope.showresponse = true;
+                    }
+
+                });
+
+            };
+
+
+        });
+    </script>
+
+
+</body>
 
 
 </html>

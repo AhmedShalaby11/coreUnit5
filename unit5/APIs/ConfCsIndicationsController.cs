@@ -21,9 +21,29 @@ namespace unit5.APIs
         }
 
 
-       
+
+
+
+        // GET: api/ConfCsIndications InterventionObject
+        [HttpGet("/InterventionList")]
+        public JsonResult GetConfCsInterventionCustomized()
+        {
+            var InterventionObject = _context.ConfIntervention.Where(k => k.Type == "Indication").ToList();
            
-       
+
+
+            return Json(InterventionObject);
+        }
+
+        // GET: api/ConfCsIndications IndicationObject
+        [HttpGet("/IndicationList")]
+        public JsonResult GetIndicationObject()
+        {
+            var IndicationObject = _context.ConfCsIndication.ToList();
+
+
+            return Json(IndicationObject);
+        }
 
         // GET: api/ConfCsIndications
         [HttpGet]
