@@ -1,4 +1,4 @@
-﻿@{
+﻿    @{
 }
 
 <div class="container">
@@ -47,8 +47,8 @@
         <div class="col-2">
             <div class="form-group">
                 <label for="">Presentation</label>
-                <select>
-                    <option value="value">Select</option>
+                <select >
+                    <option ng-repeat="p in ObjectChildPresentation">{{p.presentationName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label for="">State</label>
                 <select>
-                    <option value="value">Select</option>
+                    <option ng-repeat="s in ObjectChildState" ng-value="s.stateName">{{s.stateName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -79,8 +79,7 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="">Intervention</label>
-                <select ng-model="model_intervention">
-                    <option value="value">Select</option>
+                <select ng-model="model_intervention" ng-options="i.interventionName for i in ObjectIntervention">             
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -106,16 +105,16 @@
 
         <div class="col-2" ng-show="model_intervention">
             <div class="form-group">
-                <label for="">State</label>
+                @*<label for="">State</label>
                 <select>
                     <option value="value">Select</option>
                 </select>
-                <small id="" class="form-text text-muted"></small>
+                <small id="" class="form-text text-muted"></small>*@
             </div>
         </div>
     </div>
 
-    <div class="row justify-content-start">
+    <div class="row justify-content-center">
 
 
 
@@ -140,7 +139,7 @@
             <div class="form-group">
                 <label for="">Complications</label>
                 <select ng-model="model_complications">
-                    <option value="value">Select</option>
+            <option ng-repeat="c in ObjectComplication">{{c.name}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
@@ -162,7 +161,7 @@
                 <div class="form-group">
                     <label for="">Surgeon</label>
                     <select ng-model="model_surgeon">
-                        <option value="value">Select</option>
+                        <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
                     </select>
                     <small id="" class="form-text text-muted"></small>
                 </div>
@@ -176,9 +175,7 @@
                 <div class="form-group">
                     <label for="">Assistant</label>
                     <select ng-model="a">
-                        <option value="value">Select</option>
-                        <option>Ahmed shalaby</option>
-                        <option>Ayman Abbas</option>
+                        <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
                     </select> <span ng-click="AddAssitant(a)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>
@@ -190,9 +187,7 @@
                 <div class="form-group">
                     <label for="">Supervisor</label>
                     <select ng-model="s">
-                        <option value="value">Select</option>
-                        <option>Ahmed shalaby super</option>
-                        <option>Ayman Abbas super</option>
+                        <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
                     </select> <span ng-click="AddSupervisor(s)">Add to list?</span>
                     <small id="" class="form-text text-muted"></small>
                 </div>

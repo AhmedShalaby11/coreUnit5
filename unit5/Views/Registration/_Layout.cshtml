@@ -26,10 +26,10 @@
         @RenderBody()
     </div>
 
-    {
+
 </body>
 
-<script>
+<script type="text/javascript">
     $(function () {
         $(".datepicker").datepicker({
             changeMonth: true,
@@ -50,6 +50,73 @@
     //
 
     app.controller('registrationController', function ($scope, $http) {
+
+
+        // get all drop downs
+        $scope.FillDropDowns = function () {
+
+            //Presentation 
+            $http.get('api/ConfChildPresentations').then(function (response) {
+                $scope.ObjectChildPresentation = response.data;
+
+            });
+            //State 
+            $http.get('api/ConfChildStates').then(function (response) {
+                $scope.ObjectChildState = response.data;
+
+            });
+            //Outcome 
+            $http.get('api/NeonatalOutcomes').then(function (neonatalResponse) {
+
+                $http.get('api/ComplicationsModels').then(function (ComplicationsResponse) {
+                    var allObjects = []; 
+                    var x1 = neonatalResponse.data ;
+                    var x2 = ComplicationsResponse.data;
+
+                    x1.forEach(function(el1){
+                        allObjects.push(el1);
+                    
+                    });
+                    x2.forEach(function (el2) {
+                        allObjects.push(el2);
+
+                    });
+                    console.log(allObjects);
+                });
+
+            });
+            //Intervention
+            $http.get('api/ConfInterventions').then(function (response) {
+                $scope.ObjectIntervention = response.data;
+
+            });
+
+            //Complications 
+            $http.get('api/ComplicationsModels').then(function (response) {
+                $scope.ObjectComplication = response.data;
+
+            });
+            //Dynamics ??
+            $http.get('').then(function (response) {
+
+
+            });
+            //Surgeon 
+            $http.get('api/DoctorProfiles').then(function (response) {
+
+                $scope.ObjectDoctors = response.data;
+
+            });
+
+
+        };
+        //call it
+        $scope.FillDropDowns();
+
+
+
+
+
 
         var assistantObject = [];
         var supervisorObject = [];
