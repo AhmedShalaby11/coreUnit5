@@ -17,8 +17,10 @@ namespace unit5.Models
         public virtual DbSet<DoctorProfile> DoctorProfile { get; set; }
         public virtual DbSet<PatientDiagnose> PatientDiagnose { get; set; }
         public virtual DbSet<PatientProfile> PatientProfile { get; set; }
-      
 
+        public virtual DbSet<ComplicationsModel> Complicaitons { get; set; }
+        public virtual DbSet<CasulityDataClass> CasulityProfile { get; set; }
+        public virtual DbSet<NeonatalOutcome> NeonatalOutcome { get; set; }
         public unit5Context()
         {
 
@@ -33,7 +35,7 @@ namespace unit5.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-// To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                // To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=unit5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }

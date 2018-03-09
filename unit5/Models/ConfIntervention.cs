@@ -7,6 +7,7 @@ namespace unit5.Models
     {
         public int Recid { get; set; }
         public string InterventionName { get; set; }
+        public string Type { get; set; }
         public DateTime? RecDate { get; set; }
     }
 }

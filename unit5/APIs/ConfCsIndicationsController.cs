@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using unit5.Models;
-
+using System.IO;
 namespace unit5.APIs
 {
     [Produces("application/json")]
@@ -19,6 +19,11 @@ namespace unit5.APIs
         {
             _context = context;
         }
+
+
+       
+           
+       
 
         // GET: api/ConfCsIndications
         [HttpGet]

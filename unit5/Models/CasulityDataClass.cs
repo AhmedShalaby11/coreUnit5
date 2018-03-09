@@ -7,8 +7,8 @@ namespace unit5.Models
 {
     public class CasulityDataClass
     {
-
-        public int Recid { get; set; }
+      
+        public int Id { get; set; }
         public string ParityValue { get; set; }
         public string AddedValue { get; set; }
         public int Weeks { get; set; }
