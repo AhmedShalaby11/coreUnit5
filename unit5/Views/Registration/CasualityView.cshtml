@@ -1,7 +1,9 @@
 ﻿@{
 }
-
-<div class=" container" style="margin-top:30px;">
+<div class="justify-content-center">
+    <h2 class="text-muted text-grey text-center m-2">Casualty View</h2>
+    </div>
+<div class=" container" style="margin-top:30px;margin-left:100px;">
 
     <div class="row justify-content-start">
         <div class="col-auto">
@@ -46,6 +48,13 @@
     <div class="row justify-content-start">
         <div class="col-auto">
             <div class="form-group">
+                <label for="">Weight</label>
+                <input ng-model="ng0weight" type="text" class=" form-control" id="" aria-describedby="" placeholder="">
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="form-group">
                 <label for="">Presentation</label>
                 <select ng-model="ng0presentation">
                     <option ng-repeat="p in ObjectChildPresentation">{{p.presentationName}}</option>
@@ -61,6 +70,13 @@
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>
+        </div>
+        <div class="col-auto">
+
+        </div>
+
+        <div class="col-auto">
+
         </div>
 
     </div>
@@ -163,22 +179,7 @@
     </div>
 
     @*  *@
-    <div class="row justify-content-center">
-        <div class="col-auto">
-
-        </div>
-        <div class="col-auto">
-            <div class="form-group">
-                <label for="">Weight</label>
-                <input ng-model="ng0weight" type="text" class="col-4 form-control" id="" aria-describedby="" placeholder="">
-                <small id="" class="form-text text-muted"></small>
-            </div>
-        </div>
-        <div class="col-auto">
-
-        </div>
-    </div>
-
+  
 
     <div class="row justify-content-start">
         <div class="col-auto">
