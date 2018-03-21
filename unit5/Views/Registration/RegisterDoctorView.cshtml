@@ -36,33 +36,64 @@
                     <input ng-model="n" type="text" class="form-control undefined" placeholder="ex.Mohamed/Ahmed">
                     <small id="" class="form-text text-muted">
                     </small>
-                </div> <div style="text-align:left;" id="text2" class="form-group">
+                </div>
+                <div style="text-align:left;" id="text1" class="form-group">
+                    <label for="forlabel">Mail </label>
+                    <input ng-model="mail" type="email" class="form-control undefined" placeholder="somebody@hotmail.com">
+                    <small id="" class="form-text text-muted">
+                    </small>
+                </div>
+                <div style="text-align:left;" id="text1" class="form-group">
+                    <label for="forlabel">Mobile </label>
+                    <input ng-model="mobile" type="text" class="form-control undefined" placeholder="01xxxxxxxx">
+                    <small id="" class="form-text text-muted">
+                    </small>
+                </div>
+                <div style="text-align:left;" id="text1" class="form-group">
+                    <label for="forlabel">Location </label>
+                    <input ng-model="location" type="text" class="form-control undefined" placeholder="clinic location">
+                    <small id="" class="form-text text-muted">
+                    </small>
+                </div>
+                
+                <div style="text-align:left;" id="text2" class="form-group">
                     <label for="">Date of birth </label>
                     <input ng-model="d" type="text" class="form-control datepicker " id="dp1519323288840">
                     <small id="" class="form-text text-muted">
                     </small>
                 </div> <div style="text-align:left;" id="text4" class="form-group">
                     <label for="forlabel">Title </label>
-                    <input ng-model="t" type="text" class="form-control undefined">
+                    <select ng-model="t" class="w4">
+                        <option>Select</option>
+                        <option>Title1</option>
+                        <option>Title2</option>
+                        <option>Title3</option>
+                    </select>
                     <small id="" class="form-text text-muted">Your current title.</small>
-                </div> <div style="text-align:left;" id="text9" class="form-group">
+                </div>
+            </div>
+
+            <div id="div_doctorProfessionalInfo" class="container col-md-3">
+                <div style="text-align:left;" id="text9" class="form-group">
                     <label for="forlabel">Other Degrees </label>
                     <textarea ng-model="od" type="textarea" class="form-control">
                             </textarea>
                     <small id="" class="form-text text-muted">Additional Degrees </small>
-                </div> <div style="text-align:left;" id="text10" class="form-group">
+                </div>
+                <div style="text-align:left;" id="text10" class="form-group">
                     <label for="forlabel">Other Qualifications </label>
                     <textarea ng-model="oq" type="textarea" class="form-control">
                             </textarea>
                     <small id="" class="form-text text-muted">Conferences,Researches</small>
                 </div>
-            </div>
-
-            <div id="div_doctorProfessionalInfo" class="container col-md-3">
-
                 <div style="text-align:left;" id="text3" class="form-group">
                     <label for="forlabel">Degree </label>
-                    <input ng-model="deg" type="text" class="form-control undefined">
+                    <select ng-model="deg" class="w4">
+                        <option>Select</option>
+                        <option>Title1</option>
+                        <option>Title2</option>
+                        <option>Title3</option>
+                    </select>
 
                     <small id="" class="form-text text-muted">Your current degree</small>
                 </div> <div style="text-align:left;" id="text5" class="form-group">
