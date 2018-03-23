@@ -38,13 +38,13 @@
                     </small>
                 </div>
                 <div style="text-align:left;" id="text1" class="form-group">
-                    <label for="forlabel">Mail </label>
+                    <label for="forlabel">Mail</label>
                     <input ng-model="mail" type="email" class="form-control undefined" placeholder="somebody@hotmail.com">
                     <small id="" class="form-text text-muted">
                     </small>
                 </div>
                 <div style="text-align:left;" id="text1" class="form-group">
-                    <label for="forlabel">Mobile </label>
+                    <label for="forlabel">Mobile</label>
                     <input ng-model="mobile" type="text" class="form-control undefined" placeholder="01xxxxxxxx">
                     <small id="" class="form-text text-muted">
                     </small>
@@ -55,7 +55,7 @@
                     <small id="" class="form-text text-muted">
                     </small>
                 </div>
-                
+
                 <div style="text-align:left;" id="text2" class="form-group">
                     <label for="">Date of birth </label>
                     <input ng-model="d" type="text" class="form-control datepicker " id="dp1519323288840">
@@ -125,7 +125,7 @@
             </div>
 
         </div>
-        <button id="REQregister" ng-click="regREQ(n, t, od, oq, deg, prec)" class="btn btn-danger">Submit</button>
+        <button id="REQregister" ng-click="regREQ(n, t, od, oq, deg, prec, mail, mobile, location)" class="btn btn-danger">Submit</button>
         <div ng-show="showresponse">
             {{response}}
         </div>
