@@ -28,13 +28,13 @@
         <div class="container">
             <div class="row">
                 @*<div id='div4' class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">
-                        Add some information about the album below, the author, or any other background context. Make it a few sentences
-                        long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or
-                        contact information.
-                    </p>
-                </div>*@
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">
+                            Add some information about the album below, the author, or any other background context. Make it a few sentences
+                            long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or
+                            contact information.
+                        </p>
+                    </div>*@
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Actions</h4>
                     <ul class="list-unstyled">
@@ -46,9 +46,7 @@
         </div>
     </div>
     <div class="navbar navbar-dark bg-dark box-shadow">
-        <ul class="navbar>
-           
-        </ul>
+        <ul class="navbar></ul>
 
         <div class="container d-flex justify-content-between">
             <a href="#" class="navbar-brand d-flex align-items-center">
@@ -96,8 +94,9 @@
 
 
             //insert casulity
-            $scope.addCasulity = function (ng0parity, ng0plus, ng0weeks, ng0days, ng0presentation, ng0state, ng0intervention, ng0InterventionOutcome, ng0sex, ng0csindication, ng0indicationOutcome, ng0weight, ng0complications, ng0surgeon) {
-                console.log(ng0parity + "\n" + ng0plus + "\n" + ng0weeks + "\n" + ng0days + "\n" + ng0presentation + "\n" + ng0state + "\n" + ng0intervention + "\n" + ng0InterventionOutcome + "\n" + ng0sex + "\n" + ng0csindication + "\n" + ng0indicationOutcome + "\n" + ng0weight + "\n" + ng0complications + "\n" + ng0surgeon);
+            $scope.addCasulity = function (ng0parity, ng0plus, ng0weeks, ng0days, ng0presentation, ng0state, ng0intervention, ng0InterventionOutcome, ng0sex, ng0csindication, ng0indicationOutcome, ng0weight, ng0complications, ng0surgeon, ng0PatientName, ng0PatientAge, ng0AdmissionNumber, ng0ICU) {
+                console.log(ng0parity + "\n" + ng0plus + "\n" + ng0weeks + "\n" + ng0days + "\n" + ng0presentation + "\n" + ng0state + "\n" + ng0intervention + "\n" + ng0InterventionOutcome + "\n" + ng0sex + "\n" + ng0csindication + "\n" + ng0indicationOutcome + "\n" + ng0weight + "\n" + ng0complications + "\n" + ng0surgeon + "\n" +
+                    ng0PatientName + "\n" + ng0PatientAge + "\n" + ng0AdmissionNumber + "\n" + ng0ICU);
                 //ng0parity,ng0plus,ng0weeks,ng0days,ng0presentation,ng0state,ng0intervention,ng0InterventionOutcome,ng0sex,ng0csindication,ng0indicationOutcome,ng0weight,ng0complications,ng0surgeon
 
                 $http({
@@ -105,6 +104,10 @@
                     url: "api/CasulityDataClasses",
                     method: "POST",
                     data: {
+                        "patientName": ng0PatientName,
+                        "patientAge": ng0PatientAge,
+                        "ticketId": ng0AdmissionNumber,
+                        "ICU": ng0ICU,
                         "parityValue": ng0parity,
                         "addedValue": ng0plus,
                         "weeks": ng0weeks,
@@ -273,7 +276,7 @@
 
             //API for user registration.
 
-            $scope.regREQ = function (n, t, od, oq, deg, prec) {
+            $scope.regREQ = function (n, t, od, oq, deg, prec, mail, mobile, clinic) {
                 var bYear = $("#dp1519323288841").val();
                 var pYear = $("#dp1519323288843").val();
                 var mYear = $("#dp1519323288842").val();
@@ -296,7 +299,10 @@
                         "DoctorBirthdate": bdate,
                         "DoctorOtherDegrees": od,
                         "DoctorOtherQualifications": oq,
-                        "DoctorPrecense": prec
+                        "DoctorPrecense": prec,
+                        "Mail": mail,
+                        "Mobile": mobile,
+                        "Clinic": clinic
                     }, headers: {
                         'Content-Type': 'application/json'
                     }
