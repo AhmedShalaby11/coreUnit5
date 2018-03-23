@@ -301,7 +301,7 @@
 
             //API for user registration.
 
-            $scope.regREQ = function (n, t, od, oq, deg, prec, mail, mobile, clinic) {
+            $scope.regREQ = function (n, t, od, oq, deg, prec, mail, mobile, location) {
                 var bYear = $("#dp1519323288841").val();
                 var pYear = $("#dp1519323288843").val();
                 var mYear = $("#dp1519323288842").val();
@@ -318,16 +318,17 @@
                         "DoctorName": n,
                         "DoctorTitle": t,
                         "DoctorDegree": deg,
+                        "DoctorMail": mail,
+                        "DoctorMobile":mobile,
+                        "DoctorLocation":location,
                         "DoctorBachYear": bYear,
                         "DoctorMcsYear": mYear,
                         "DoctorPhdYear": pYear,
                         "DoctorBirthdate": bdate,
                         "DoctorOtherDegrees": od,
                         "DoctorOtherQualifications": oq,
-                        "DoctorPrecense": prec,
-                        "Mail": mail,
-                        "Mobile": mobile,
-                        "Clinic": clinic
+                        "DoctorPrecense": prec
+                     
                     }, headers: {
                         'Content-Type': 'application/json'
                     }

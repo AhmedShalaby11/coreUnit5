@@ -9,6 +9,9 @@ namespace unit5.Models
         public string DoctorName { get; set; }
         public string DoctorTitle { get; set; }
         public string DoctorDegree { get; set; }
+        public string DoctorMail { get; set; }
+        public string DoctorMobile { get; set; }
+        public string DoctorLocation { get; set; }
         public DateTime? DoctorBachYear { get; set; }
         public DateTime? DoctorMcsYear { get; set; }
         public DateTime? DoctorPhdYear { get; set; }
