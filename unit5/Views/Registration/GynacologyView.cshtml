@@ -1,0 +1,149 @@
+﻿@{
+}
+<div class="justify-content-center">
+    <h2 class="text-muted text-grey text-center m-2">Casualty View</h2>
+</div>
+<div class=" container" style="margin-top:30px;margin-left:100px;">
+    <div class="row justify-content-start">
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Patient Name</label>
+                <input ng-model="ng0PatientName " type="text" class="form-control" id="" aria-describedby="" placeholder="Full Name">
+                <small id="" class="form-text text-muted">Preferred Full Name</small>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Patient Age </label>
+                <input ng-model="ng0PatientAge " type="text" class="form-control" id="" aria-describedby="" placeholder="">
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Addmission Number</label>
+                <input ng-model="ng0AdmissionNumber" type="text" class="form-control" id="" aria-describedby="" placeholder="Ticket Number">
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">ICU</label>
+                <input ng-model="ng0ICU" type="checkbox" class="form-control" id="" aria-describedby="" placeholder="Ticket Number">
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+    </div>
+
+    <div class="justify-content-start row">
+
+        <div class="col-auto "><h4>GA</h4></div>
+
+        <div class="form-group">
+            <label for="">By</label>
+            <select ng-model="ng0By">
+                <option>Select</option>
+            </select>
+            <small id="" class="form-text text-muted"></small>
+        </div>
+    </div>
+
+    <div class="row justify-content-start">
+
+        <div class="row justify-content-start">
+
+            <div class="col-auto">
+                <div class="form-group">
+                    <label for="">Intervention</label>
+                    <select ng-model="ng0intervention">
+                        <option ng-repeat="i in ObjectIntervention">{{i.interventionName}}</option>
+                    </select>
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+            </div>
+        </div>
+        @* CS INDICATION  *@
+        <div class="row justify-content-start">
+
+            <div class="col-auto ml-3">
+                <div class="form-group">
+                    <label for="">CS Indications</label>
+                    <select ng-model="ng0csindication">
+                        <option ng-repeat="in in intervenList">{{in.interventionName}}</option>
+                    </select>
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+            </div>
+        </div>
+        @*  *@
+
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Complications</label>
+                <select ng-model="ng0complications">
+                    <option ng-repeat="c in ObjectComplication">{{c.name}}</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+            <div class="col-auto" ng-show="ng0complications">
+                @*<div class="form-group">
+                        <label for="">Dynamics</label>
+                        <select>
+                            <option value="value">Select</option>
+                        </select>
+                        <small id="" class="form-text text-muted"></small>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    @* Surgeon *@
+    <div class="col mt-4 justify-content-start">
+        <div class="col-auto">
+            <div class="form-group">
+                <label for="">Surgeon</label>
+                <select ng-model="ng0surgeon">
+                    <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+
+        </div>
+        <div class="col-auto" ng-show="ng0surgeon">
+
+            <div class="form-group">
+                <label for="">Assistant</label>
+                <select ng-model="ng0assistant">
+                    <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
+                </select> <span ng-click="AddAssitant(ng0assistant)">Add to list?</span>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+
+        </div>
+        <div class="col-auto" ng-show="ng0surgeon">
+            <div class="form-group">
+                <label for="">Supervisor</label>
+                <select ng-model="ng0supervisor">
+                    <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
+                </select> <span ng-click="AddSupervisor(ng0supervisor)">Add to list?</span>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-auto">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="">Notes</label>
+                <textarea ng-model="ng0additionalNotes" type="text" class=" form-control" id="" aria-describedby="" placeholder=""></textarea>
+                <small id="" class="form-text text-muted">Additional Notes </small>
+            </div>
+
+        </div>
+    </div>
+    @* End *@
+</div>
+<div class="row justify-content-center">
+    <button class="btn btn-danger" ng-click="addCasulity(ng0intervention,ng0csindication,ng0complications,ng0surgeon,ng0PatientName,ng0PatientAge,ng0AdmissionNumber,ng0ICU)"> Submit</button>
+</div>
