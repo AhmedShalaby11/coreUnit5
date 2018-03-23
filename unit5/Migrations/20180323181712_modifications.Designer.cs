@@ -11,9 +11,10 @@ using unit5.Models;
 namespace unit5.Migrations
 {
     [DbContext(typeof(unit5Context))]
-    partial class unit5ContextModelSnapshot : ModelSnapshot
+    [Migration("20180323181712_modifications")]
+    partial class modifications
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

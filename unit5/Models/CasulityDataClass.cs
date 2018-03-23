@@ -9,6 +9,10 @@ namespace unit5.Models
     {
       
         public int Id { get; set; }
+        public string patientName { get; set; }
+        public string patientAge { get; set; }
+        public string ticketId { get; set; }
+        public string ICU { get; set; }
         public string ParityValue { get; set; }
         public string AddedValue { get; set; }
         public int Weeks { get; set; }

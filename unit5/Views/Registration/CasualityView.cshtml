@@ -46,7 +46,7 @@
     <div class="justify-content-start row">
 
 
-        <div class="col-auto "><h4>GA</h4></div>
+        <div class="col-auto "><h4>GA</h4><h5 ng-show="ng0parity" style="font-size:20px" class="badge badge-warning">GA {{ng0By}} + {{ng0weeks}} + {{ng0days}} + {{ng0parity}}</h5></div>
 
 
         <div class="form-group">
@@ -82,7 +82,7 @@
         <div class="col-auto">
             <div class="form-group">
                 <label for="">Parity</label>
-                <input ng-model="ng0parity" type="text" class="form-control" id="" aria-describedby="" placeholder="">
+                <input ng-change="appendDropdown(ng0parity)" ng-model="ng0parity" type="text" class="form-control" id="" aria-describedby="" placeholder="">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
@@ -115,6 +115,16 @@
 
 
         <div class="row justify-content-start">
+            <div class="col-auto">
+
+                    <div id="subdropdowns" class="col-auto mb-3">
+
+                    </div>
+
+
+
+
+            </div>
             <div class="col-auto">
 
             </div>
@@ -249,6 +259,11 @@
 
     </div>
 
+
+    
+
+ 
+
     <div class="row justify-content-start">
         <div class="col-auto">
             <div class="form-group">
@@ -260,14 +275,32 @@
             </div>
 
             <div class="col-auto" ng-show="ng0complications">
-                @*<div class="form-group">
-                        <label for="">Dynamics</label>
-                        <select>
-                            <option value="value">Select</option>
-                        </select>
-                        <small id="" class="form-text text-muted"></small>
-                    </div>*@
+
+
+                <div class="form-group">
+                    <label for="">Additional Complications</label>
+                    <select ng-model="ng0addcomplications">
+                        <option >SELECT</option>
+                    </select> <span ng-click="additionalcomplications(ng0addcomplications)">Add Complications?</span>
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+
+
             </div>
+
+            <div class="col-auto" ng-show="ng0complications">
+                @*<div class="form-group">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <label for="">Dynamics</label>
+                <select>
+                    <option value="value">Select</option>
+                </select>
+                <small id="" class="form-text text-muted"></small>
+            </div>*@
+            </div>
+        </div>
+
         </div>
     </div>
     @* Surgeon *@
@@ -276,7 +309,7 @@
             <div class="form-group">
                 <label for="">Surgeon</label>
                 <select ng-model="ng0surgeon">
-                    <option ng-repeat="doctor in ObjectDoctors" value="value">{{doctor.doctorName}}</option>
+                    <option ng-repeat="doctor in ObjectDoctors">{{doctor.doctorName}}</option>
                 </select>
                 <small id="" class="form-text text-muted"></small>
             </div>

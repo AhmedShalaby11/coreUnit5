@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -15,8 +17,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
+
+
     <title>@ViewBag.Title</title>
 </head>
+
 
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
@@ -35,7 +40,6 @@
                     <ul class="list-unstyled">
                         <li class="text-mutenavbar-item"><a class="text-white " href="/register">Register</a></li>
                         <li class="text-mutenavbar-item"><a class="text-white " href="/casulity">Casulity</a></li>
-                        <li class="text-mutenavbar-item"><a class="text-white " href="/gynacology">Gynacology</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,8 +47,10 @@
     </div>
     <div class="navbar navbar-dark bg-dark box-shadow">
         <ul class="navbar></ul>
+
         <div class="container d-flex justify-content-between">
             <a href="#" class="navbar-brand d-flex align-items-center">
+
                 <strong></strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
@@ -60,6 +66,8 @@
     </div>
 
 
+
+
     <script type="text/javascript">
         $(function () {
             $(".datepicker").datepicker({
@@ -69,6 +77,9 @@
             });
         });
     </script>
+
+
+
 
 
     <script>
@@ -83,7 +94,7 @@
 
 
             //insert casulity
-            $scope.addCasulity = function (ng0parity, ng0plus, ng0weeks, ng0days, ng0presentation, ng0state, ng0intervention, ng0InterventionOutcome, ng0sex, ng0csindication, ng0indicationOutcome, ng0weight, ng0complications, ng0surgeon, ng0PatientName, ng0PatientAge, ng0AdmissionNumber, ng0ICU) {
+            $scope.addCasulity = function ( ng0parity,ng0plus, ng0weeks, ng0days, ng0presentation, ng0state, ng0intervention, ng0InterventionOutcome, ng0sex, ng0csindication, ng0indicationOutcome, ng0weight, ng0complications, ng0surgeon, ng0PatientName, ng0PatientAge, ng0AdmissionNumber, ng0ICU) {
                 console.log(ng0parity + "\n" + ng0plus + "\n" + ng0weeks + "\n" + ng0days + "\n" + ng0presentation + "\n" + ng0state + "\n" + ng0intervention + "\n" + ng0InterventionOutcome + "\n" + ng0sex + "\n" + ng0csindication + "\n" + ng0indicationOutcome + "\n" + ng0weight + "\n" + ng0complications + "\n" + ng0surgeon + "\n" +
                     ng0PatientName + "\n" + ng0PatientAge + "\n" + ng0AdmissionNumber + "\n" + ng0ICU);
                 //ng0parity,ng0plus,ng0weeks,ng0days,ng0presentation,ng0state,ng0intervention,ng0InterventionOutcome,ng0sex,ng0csindication,ng0indicationOutcome,ng0weight,ng0complications,ng0surgeon
@@ -132,44 +143,27 @@
             // end of insert
 
 
-            //insert Gynacology
-            $scope.addCasulity = function (ng0intervention, ng0csindication, ng0complications, ng0surgeon, ng0PatientName, ng0PatientAge, ng0AdmissionNumber, ng0ICU) {
-                console.log(ng0intervention + "\n" +ng0csindication + "\n" + ng0indicationOutcome + "\n" + ng0complications + "\n" + ng0surgeon + "\n" +
-                    ng0PatientName + "\n" + ng0PatientAge + "\n" + ng0AdmissionNumber + "\n" + ng0ICU);
-                //ng0parity,ng0plus,ng0weeks,ng0days,ng0presentation,ng0state,ng0intervention,ng0InterventionOutcome,ng0sex,ng0csindication,ng0indicationOutcome,ng0weight,ng0complications,ng0surgeon
 
-                $http({
+            //append the dropdowns dynamically according to the pariry
+            $scope.appendDropdown = function (x) {
+                $("#subdropdowns").empty();
 
-                    url: "api/CasulityDataClasses",
-                    method: "POST",
-                    data: {
-                        "patientName": ng0PatientName,
-                        "patientAge": ng0PatientAge,
-                        "ticketId": ng0AdmissionNumber,
-                        "ICU": ng0ICU,
-                        "presentation": ng0presentation,
-                        "intervention": ng0intervention + ng0csindication,
-                        "complications": ng0complications,
-                        "dynamics": "",
-                        "surgeons": ng0surgeon,
-                        "assistants": assistantObject.toString(),
-                        "supervisors": supervisorObject.toString()
-                    }, headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(function (response) {
-                    if (response.status == 200 || response.status == 201) {
-                        $scope.response = "Gynacology Added";
-                        $scope.showresponse = true;
-                    }
-                    else {
-                        $scope.response = "Problem occured, Please contact your system administrator.";
-                        $scope.showresponse = true;
+                for (var i = 0; i < x; i++) {
+                    if (x <= 12) {
+                        //clear body
+
+
+
+                        //
+                        //append the dropdowns
+                        $("#subdropdowns").append("<select ng-model='ng0childNumber"+(i+1)+"' class='mt-3 mb-1' style='width:300px;'><option>test</option></select></br>");
+
+
                     }
 
-                });
+
+                }
             }
-
 
 
             // get all drop downs
@@ -265,6 +259,12 @@
 
             var assistantObject = [];
             var supervisorObject = [];
+            var additionalcomplications = [];
+            $scope.additionalcomplications = function (a) {
+                additionalcomplications.push(a);
+                console.log(additionalcomplications);
+
+            }
             $scope.AddAssitant = function (a) {
                 assistantObject.push(a);
                 console.log(assistantObject);
@@ -301,7 +301,7 @@
 
             //API for user registration.
 
-            $scope.regREQ = function (n, t, od, oq, deg, prec, mail, mobile, clinic) {
+            $scope.regREQ = function (n, t, od, oq, deg, prec, mail, mobile, location) {
                 var bYear = $("#dp1519323288841").val();
                 var pYear = $("#dp1519323288843").val();
                 var mYear = $("#dp1519323288842").val();
@@ -318,16 +318,17 @@
                         "DoctorName": n,
                         "DoctorTitle": t,
                         "DoctorDegree": deg,
+                        "DoctorMail": mail,
+                        "DoctorMobile":mobile,
+                        "DoctorLocation":location,
                         "DoctorBachYear": bYear,
                         "DoctorMcsYear": mYear,
                         "DoctorPhdYear": pYear,
                         "DoctorBirthdate": bdate,
                         "DoctorOtherDegrees": od,
                         "DoctorOtherQualifications": oq,
-                        "DoctorPrecense": prec,
-                        "Mail": mail,
-                        "Mobile": mobile,
-                        "Clinic": clinic
+                        "DoctorPrecense": prec
+                     
                     }, headers: {
                         'Content-Type': 'application/json'
                     }
@@ -349,6 +350,8 @@
         });
     </script>
 
+
 </body>
+
 
 </html>
